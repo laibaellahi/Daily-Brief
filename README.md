@@ -1,22 +1,78 @@
-# Responsive Flutter News Platform ("Daily Brief")
+# 📰 Daily Brief: Responsive Flutter News Platform
 
-Phase 1 - Flutter Foundations and UI Mastery.
+A responsive news app built with Flutter that runs on **mobile, tablet, and web** from a single codebase. It features advanced navigation with GoRouter, Material Design 3 theming, adaptive layouts, Hero animations, and a persisted dark/light theme.
 
-## Features
-- GoRouter, 4 routes: `/`, `/categories`, `/settings`, `/article/:id`
-- Material Design 3 theme generated from one brand color (light + dark)
-- Adaptive layouts: 1 column (phone) -> 2 (tablet) -> 3 (web); bottom bar -> rail -> extended rail
-- Hero image transition from card to detail
-- Theme toggle persisted with shared_preferences
+## ✨ Features
 
-## Run (VS Code)
-1. Open this folder in VS Code (File > Open Folder).
-2. In the terminal, generate the platform folders ONCE (keeps lib/ and pubspec.yaml):
-   `flutter create --platforms=android,ios,web .`
-3. `flutter pub get`
-4. Run: `flutter run -d chrome` (web) or pick an emulator / device.
-5. For release Android builds add to android/app/src/main/AndroidManifest.xml:
-   `<uses-permission android:name="android.permission.INTERNET"/>`
+- **GoRouter navigation** with 4 routes and a `ShellRoute`
+- **Material Design 3** theme generated from a single brand color (light + dark)
+- **Adaptive layouts** that switch between a single column and a grid
+- **Adaptive navigation**: bottom bar → rail → extended rail
+- **Hero transition** from article card to detail page
+- **Persisted theme toggle** using `shared_preferences`
+- Category filtering with chips
+- Image loading and error fallbacks
 
-Images load from picsum.photos (internet needed; offline shows a placeholder icon).
-# Daily-Brief
+## 🧭 Routes
+
+| Path | Screen | Purpose |
+|---|---|---|
+| `/` | HomeScreen | Top stories feed |
+| `/categories` | CategoriesScreen | Filter articles by category |
+| `/settings` | SettingsScreen | Dark mode switch and color preview |
+| `/article/:id` | ArticleDetailScreen | Full article page |
+
+## 📐 Responsive Behavior
+
+| Device | Width | Navigation | Layout |
+|---|---|---|---|
+| Phone | < 600 px | Bottom NavigationBar | 1 column |
+| Tablet | 600-999 px | NavigationRail | 2 columns |
+| Web | 1000 px+ | Extended NavigationRail | 3 columns |
+
+
+## 🛠 Tech Stack
+
+- Flutter & Dart
+- [go_router](https://pub.dev/packages/go_router)
+- [provider](https://pub.dev/packages/provider)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+
+## 📁 Project Structure
+
+```
+lib/
+├── main.dart
+├── app/            # router.dart, theme.dart
+├── models/         # article.dart
+├── data/           # mock_articles.dart
+├── providers/      # theme_provider.dart
+├── screens/        # home, categories, settings, article detail
+└── widgets/        # app_shell, article_card, article_grid, news_image
+```
+
+## 🚀 Getting Started
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/laibaellahi/Daily-Brief.git
+cd Daily-Brief
+
+# 2. Generate platform folders (first time only)
+flutter create --platforms=android,ios,web .
+
+# 3. Install dependencies
+flutter pub get
+
+# 4. Run the app
+flutter run -d chrome
+```
+
+> Images load from picsum.photos, so an internet connection is needed. Offline, a placeholder icon is shown.
+
+
+## 👩‍💻 Author
+
+**Laiba Ellahi**
+BS Software Engineering, Superior University
+GitHub: [@laibaellahi](https://github.com/laibaellahi)
